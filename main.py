@@ -35,6 +35,10 @@ def preprocessing(input_features: InputFeatures):
 
 app = FastAPI()
 
+@app.get("/predict")
+def predict(input_features: InputFeatures):
+    return preprocessing(input_features)
+
 @app.post("/predict")
 async def predict(input_features: InputFeatures):
     data = preprocessing(input_features)
